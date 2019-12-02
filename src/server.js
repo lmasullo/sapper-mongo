@@ -1,6 +1,6 @@
 //Dependencies
-const express = require('express');
-const mongoose = require('mongoose');
+import express from 'express';
+import mongoose from 'mongoose';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
 
@@ -9,8 +9,8 @@ const app = express();
 
  // You can also use Express
  app.use(
-	express.urlencoded({ extended: true }),
-	express.json(),
+	//express.urlencoded({ extended: true }),
+	//express.json(),
 	compression({ threshold: 0 }),
 	express.static('static'),
 	sapper.middleware()
@@ -24,7 +24,7 @@ const dev = NODE_ENV === 'development';
  // Connect to the Mongo DB **********************************************
 // If deployed, use the deployed database. Otherwise use the local database
 const MONGODB_URI =
-process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/users';
+process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/sapper';
 
 // Connect to the db
 mongoose
@@ -46,6 +46,7 @@ mongoose
 
 // Require routes
 //const UsersRoutes = require('./api/users.route');
+//import UsersRoutes from './api/users.routes';
 
 // Sets the base route as localhost:4000/rally
 // All routes will be off rally
